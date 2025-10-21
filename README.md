@@ -1,48 +1,42 @@
- 執好的，以下是移除所有表情符號後、正式版本的 README.md。
-內容保持專業、條列清晰，適合放在 GitHub 或專案報告中。
+# Corrective RAG System — 緯創永續報告書智慧問答系統
 
-⸻
-
-Corrective RAG System — 緯創永續報告書智慧問答系統
-
-專案簡介
-
-本專案實作一個具備自我評估與主題適應能力的 RAG 系統（Corrective RAG），
-結合 PDF 文件知識與即時外部搜尋，
-可針對「緯創資通 2024 永續報告書」進行問答與分析，
+## 專案簡介
+本專案實作一個具備自我評估與主題適應能力的 RAG 系統（Corrective RAG），  
+結合 PDF 文件知識與即時外部搜尋，  
+可針對「緯創資通 2024 永續報告書」進行問答與分析，  
 並在無法由文件回答時，自動啟用網路補強。
 
-系統核心邏輯源於 Corrective RAG (CRAG) 架構，
+系統核心邏輯源於 Corrective RAG (CRAG) 架構，  
 具備以下能力：
-	1.	文件檢索 (Retrieval)：從本地向量資料庫中擷取最相關內容
-	2.	文件評估 (Evaluation)：判斷文件是否足以回答問題（Correct / Ambiguous / Incorrect）
-	3.	知識修正 (Correction)：
-	•	正確 → 使用內部文件
-	•	模糊 → 結合內外知識
-	•	錯誤 → 改用外部搜尋
-	4.	生成回覆 (Generation)：根據最終知識生成回答
-	5.	主題偵測 (Domain Detection)：若問題與文件主題無關（如天氣、餐廳推薦），直接走外部搜尋。
 
-⸻
+1. **文件檢索 (Retrieval)**：從本地向量資料庫中擷取最相關內容  
+2. **文件評估 (Evaluation)**：判斷文件是否足以回答問題（Correct / Ambiguous / Incorrect）  
+3. **知識修正 (Correction)**：  
+   - Correct → 使用內部文件  
+   - Ambiguous → 結合內外知識  
+   - Incorrect → 改用外部搜尋  
+4. **生成回覆 (Generation)**：根據最終知識生成回答  
+5. **主題偵測 (Domain Detection)**：若問題與文件主題無關（如天氣、餐廳推薦），直接走外部搜尋。
 
-系統架構流程
+---
+
+## 系統架構流程
 
 User Query (X)
-   ↓
+↓
 Domain Detection → 判斷是否屬於文件範圍
-   ↓
+↓
 [In-domain] → Retrieval → 評估文件正確性
-      ├── Correct → 精煉內部知識 (k_in)
-      ├── Ambiguous → 內部精煉 + 外部補強 (k_in + k_ex)
-      └── Incorrect → 外部搜尋 (k_ex)
+├── Correct → 精煉內部知識 (k_in)
+├── Ambiguous → 內部精煉 + 外部補強 (k_in + k_ex)
+└── Incorrect → 外部搜尋 (k_ex)
 [Out-of-domain] → 直接外部搜尋 (k_ex)
-   ↓
+↓
 Generation → 輸出最終回答
 
+---
 
-⸻
-
-專案結構
+## 專案結構
 
 project/
 │
@@ -60,13 +54,12 @@ project/
 ├── .venv/                                   # 虛擬環境
 └── README.md
 
+---
 
-⸻
+## 安裝與環境設定
 
-安裝與環境設定
-
-1. 建立虛擬環境
-
+### 1. 建立虛擬環境
+bash
 python3 -m venv .venv
 source .venv/bin/activate
 
@@ -193,7 +186,3 @@ Out-of-domain	問題不屬於文件範圍	直接外部搜尋
 Minrou Lin (林旻柔)
 AI 專題開發者 | Corrective RAG 研究實作
 
-⸻
-
-是否希望我幫你補一份 requirements.txt（列出正確的套件與版本）一起附在這個 README？
-這樣就能直接讓別人一鍵安裝並執行整個系統。
