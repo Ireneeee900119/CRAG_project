@@ -1,6 +1,3 @@
-好的，這是一份經過重新編排，適合直接用於 GitHub 專案的 `README.md` 內容。我使用 Markdown 格式來強化結構和閱讀性。
-
-````markdown
 # Corrective RAG System — 緯創永續報告書智慧問答系統
 
 ## 專案簡介
@@ -18,8 +15,6 @@
 
 ## 系統架構流程
 專案流程圖示如下：
-
-```mermaid
 graph TD
     A[User Query (X)] --> B{Domain Detection};
     B -- In-domain --> C[Retrieval];
@@ -33,7 +28,8 @@ graph TD
     G --> H;
     I --> H;
     H --> J[輸出最終回答];
-````
+
+---
 
 ### Corrective RAG 評估邏輯
 
@@ -47,8 +43,6 @@ graph TD
 -----
 
 ## 專案結構
-
-```
 project/
 │
 ├── Backend/
@@ -64,7 +58,6 @@ project/
 │
 ├── .venv/                                   # 虛擬環境目錄
 └── README.md
-```
 
 -----
 
@@ -72,27 +65,22 @@ project/
 
 ### 1\. 建立與啟動虛擬環境
 
-```bash
 # 建立虛擬環境
 python3 -m venv .venv
 
 # 啟動虛擬環境
 source .venv/bin/activate
-```
 
 ### 2\. 安裝依賴套件
 
 若專案根目錄下有 `requirements.txt`：
 
-```bash
 pip install -r requirements.txt
-```
+
 
 若沒有，可直接安裝必要套件：
 
-```bash
 pip install langchain langchain-openai langchain-community faiss-cpu pypdf duckduckgo-search
-```
 
 > **備註**: 這裡將 `ddgs` 替換為 `duckduckgo-search`，這是較常用的套件名稱。
 
@@ -100,9 +88,7 @@ pip install langchain langchain-openai langchain-community faiss-cpu pypdf duckd
 
 請將您的 OpenAI API Key 設定為環境變數：
 
-```bash
 export OPENAI_API_KEY="你的_API_KEY"
-```
 
 -----
 
