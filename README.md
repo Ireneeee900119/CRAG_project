@@ -190,5 +190,18 @@ Final Answer:
 本專案主要用於研究與教育用途。
 如需應用於商業環境，請自行設定 API Key 並遵守 OpenAI 使用條款及其他相關服務的授權規定。
 
+
+-----
+
+
+## Cite
+If you think our work is helpful or use the code, please cite the following paper:
+
 ```
+@article{yan2024corrective,
+  title={Corrective Retrieval Augmented Generation},
+  author={Yan, Shi-Qi and Gu, Jia-Chen and Zhu, Yun and Ling, Zhen-Hua},
+  journal={arXiv preprint arXiv:2401.15884},
+  year={2024}
+}
 ```
