@@ -14,20 +14,26 @@
 ---
 
 ## 系統架構流程
-專案流程圖示如下：
-graph TD
-    A[User Query (X)] --> B{Domain Detection};
-    B -- In-domain --> C[Retrieval];
-    B -- Out-of-domain --> I[外部搜尋 (k_ex)];
-    C --> D{Evaluation};
-    D -- Correct --> E[精煉內部知識 (k_in)];
-    D -- Ambiguous --> F[內部精煉 + 外部補強 (k_in + k_ex)];
-    D -- Incorrect --> G[外部搜尋 (k_ex)];
-    E --> H[Generation];
-    F --> H;
-    G --> H;
-    I --> H;
-    H --> J[輸出最終回答];
+
+```
+User Query (X)
+↓
+Domain Detection (主題偵測)
+├── [屬於文件範圍 - In-domain]
+│   ↓
+│   Retrieval (文件檢索)
+│   ↓
+│   Evaluation (文件評估)
+│   ├── Correct (正確) → 精煉內部知識 (k_in)
+│   ├── Ambiguous (模糊) → 內部精煉 + 外部補強 (k_in + k_ex)
+│   └── Incorrect (不正確) → 外部搜尋 (k_ex)
+└── [不屬於文件範圍 - Out-of-domain]
+    └── 直接外部搜尋 (k_ex)
+↓
+Generation (生成回覆)
+↓
+輸出最終回答
+```
 
 ---
 
@@ -42,23 +48,26 @@ graph TD
 
 -----
 
-## 專案結構
-project/
-│
-├── Backend/
-│   ├── data/
-│   │   ├── 2024SustainabilityReportCH.pdf   # 緯創永續報告書 (知識來源)
-│   │   └── build_data.py                    # 建立向量資料庫腳本
-│   │
-│   ├── RAG/
-│   │   ├── corrective_rag_v9.py             # 主程式（CRAG + Domain Detection 核心邏輯）
-│   │   └── utils.py                         # 相關工具程式
-│   │
-│   └── main.py                              # 問答系統入口點
-│
-├── .venv/                                   # 虛擬環境目錄
-└── README.md
+### 專案結構（保留原純文字表格格式，確保對齊）
 
+```
+
+project/
+|
+|-- Backend/
+|   |-- data/
+|   |   |-- 2024SustainabilityReportCH.pdf    # 緯創永續報告書 (知識來源)
+|   |   |-- build_data.py                     # 建立向量資料庫腳本
+|   |
+|   |-- RAG/
+|   |   |-- corrective_rag_v9.py              # 主程式（CRAG + Domain Detection 核心邏輯）
+|   |   |-- utils.py                          # 相關工具程式
+|   |
+|   |-- main.py                               # 問答系統入口點
+|
+|-- .venv/                                    # 虛擬環境目錄
+|-- README.md
+```
 -----
 
 ## 安裝與環境設定
