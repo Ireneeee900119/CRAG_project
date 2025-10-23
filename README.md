@@ -18,6 +18,7 @@
 4. **生成回覆 (Generation)**：根據最終知識生成回答  
 5. **主題偵測 (Domain Detection)**：若問題與文件主題無關（如天氣、餐廳推薦），直接走外部搜尋。
 
+
 ---
 
 ## 系統架構流程
@@ -63,7 +64,9 @@ bash
 python3 -m venv .venv
 source .venv/bin/activate
 
-2. 安裝依賴套件
+
+
+### 2. 安裝依賴套件
 
 pip install -r requirements.txt
 
@@ -71,7 +74,7 @@ pip install -r requirements.txt
 
 pip install langchain langchain-openai langchain-community faiss-cpu ddgs pypdf
 
-3. 設定 OpenAI API Key
+### 3. 設定 OpenAI API Key
 
 export OPENAI_API_KEY="你的_API_KEY"
 
@@ -181,8 +184,8 @@ Out-of-domain	問題不屬於文件範圍	直接外部搜尋
 
 ⸻
 
-作者
+參考
 
-Minrou Lin (林旻柔)
-AI 專題開發者 | Corrective RAG 研究實作
 
+
+---
