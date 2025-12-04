@@ -128,6 +128,15 @@ Vector DB saved to vector_store
 python Backend/main.py
 ```
 
+第二次進入
+```bash
+#強制進去虛擬環境
+conda deactivate
+cd Backend
+export OPENAI_API_KEY="你的_API_KEY"
+../.venv/bin/python main.py
+```
+
 **內部檢索範例 (Correct):**
 
 ```
